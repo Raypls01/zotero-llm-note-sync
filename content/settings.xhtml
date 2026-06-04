@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/global.css"?>
+<!DOCTYPE window>
+<window id="llm-notesync-settings"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        title="LLM Note Auto-Sync 设置"
+        width="520" height="480"
+        persist="screenX screenY width height"
+        onload="initSettings()">
+
+<script src="chrome://llmnotesync/content/settings.js"/>
+
+<vbox flex="1" style="padding:16px">
+  <label style="font-size:1.2em;font-weight:bold;margin-bottom:8px">LLM Note Auto-Sync 设置</label>
+  <separator class="thin"/>
+
+  <!-- 自动检查 -->
+  <groupbox>
+    <caption><label>自动检查</label></caption>
+    <hbox align="center" style="margin:6px 0">
+      <label control="pollIntervalInput" style="min-width:120px">检查间隔（秒）</label>
+      <html:input type="number" id="pollIntervalInput"
+        min="10" max="3600" step="5"
+        style="width:80px;padding:3px 6px;border:1px solid #aaa;border-radius:4px"/>
+      <label style="font-size:0.85em;color:#888;margin-left:8px">（10–3600）</label>
+    </hbox>
+  </groupbox>
+
+  <!-- 笔记格式 -->
+  <groupbox>
+    <caption><label>笔记格式</label></caption>
+    <hbox align="center" style="margin:4px 0">
+      <label control="appendPositionMenu" style="min-width:120px">追加位置</label>
+      <menulist id="appendPositionMenu">
+        <menupopup>
+          <menuitem value="bottom" label="追加到笔记末尾"/>
+          <menuitem value="top" label="插入到笔记开头"/>
+        </menupopup>
+      </menulist>
+    </hbox>
+    <checkbox id="includeModelCheck" label="显示模型名称"/>
+    <checkbox id="includeHeadingTimestampCheck" label="显示对话日期标题"/>
+  </groupbox>
+
+  <!-- 操作 -->
+  <groupbox>
+    <caption><label>操作</label></caption>
+    <hbox align="center" style="margin:6px 0">
+      <button id="saveBtn" label="保存全部设置" style="min-width:120px"/>
+      <label id="saveMsg" style="margin-left:12px;font-weight:bold;font-size:0.95em;color:green;display:none"/>
+    </hbox>
+    <separator class="thin"/>
+    <hbox align="center" style="margin:4px 0">
+      <button id="runNowBtn" label="立即运行批量追加" style="min-width:140px"/>
+      <label id="statusLabel" style="margin-left:12px;font-weight:bold"/>
+    </hbox>
+  </groupbox>
+
+  <separator class="groove" style="margin-top:12px"/>
+  <hbox pack="end">
+    <button id="closeBtn" label="关闭"/>
+  </hbox>
+</vbox>
+</window>
