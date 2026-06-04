@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "LLM Note Auto-Sync",
+  "version": "1.0.0",
+  "description": "自动将 zotero-llm 对话追加到文献已有笔记。可配置检查间隔、追加位置和显示格式。支持 Obsidian 同步。",
+  "author": "Raypls01",
+  "icons": {
+    "48": "content/icon.svg",
+    "96": "content/icon.svg"
+  },
+  "applications": {
+    "zotero": {
+      "id": "llm-note-sync@Raypls01.github.io",
+      "strict_min_version": "9.0.0",
+      "strict_max_version": "10.0.*"
+    }
+  }
+}
